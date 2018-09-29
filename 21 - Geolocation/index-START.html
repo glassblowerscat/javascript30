@@ -58,6 +58,21 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+
+    const arrow = document.querySelector('.arrow');
+    console.log(arrow);
+    const speed = document.querySelector('.speed-value');
+    console.log(speed);
+
+    navigator.geolocation.watchPosition((data) => {
+      console.log(data);
+      speed.textContent = data.coords.speed;
+      arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+    }, (err) => {
+      console.error(err);
+      alert('You must enable Location Services for this page to work.')
+    });
+
   </script>
 </body>
 </html>
